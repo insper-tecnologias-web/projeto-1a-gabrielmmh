@@ -130,6 +130,7 @@ body {
 }
 
 .card-container{
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -226,8 +227,21 @@ body {
   transform: rotate(10deg);
 }
 
+.delete-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.delete_icon {
+  position: absolute;
+
+  top: 10%;
+  right: 10%;
 
 
+  width: 20px;
+  height: 20px;
+}
 
 
 

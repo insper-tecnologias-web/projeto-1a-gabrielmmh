@@ -34,7 +34,7 @@ class Database:
 
     # Se tudo der certo. O teste test_delete_row e todos os outros devem passar com sucesso.
 
-    def delete(self, note_id):
+    def delete_id(self, note_id):
         self.conn.execute(f'DELETE FROM note WHERE id = {note_id}')
         self.conn.commit()
         

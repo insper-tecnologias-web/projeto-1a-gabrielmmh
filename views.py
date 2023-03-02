@@ -1,4 +1,5 @@
-from utils import load_data, load_template, adicionar_nota, formata_nota, build_response
+from utils import *
+from database import *
 import urllib.parse
 
 def index(request):
@@ -23,11 +24,12 @@ def index(request):
         adicionar_nota(params)
 
         return build_response(code=303, reason='See Other', headers='Location: /')
+    
     # Cria uma lista de <li>'s para cada anotação
     # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('templates/components/note.html')
     notes_li = [
-        note_template.format(title=dados.title, details=dados.content)
+        note_template.format(id=dados.id, title=dados.title, details=dados.content)
         for dados in load_data('banco')
     ]
     notes = '\n'.join(notes_li)
@@ -35,3 +37,12 @@ def index(request):
     body = load_template('templates/index.html').format(notes=notes)
     
     return build_response(body)
+
+def delete(request):
+    """Implemente a função delete, que recebe uma string com a requisição e devolve uma string com a resposta HTTP.
+    """
+    db = Database('banco')
+    id = request.split("delete/")[1].split(' HTTP')[0]
+    db.delete_id(id)
+    print(id)
+    return build_response(code=303, reason='See Other', headers='Location: /')

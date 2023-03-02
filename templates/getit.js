@@ -20,11 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Sorteia classes de cores aleatoriamente para os cards
   let cards = document.getElementsByClassName("card");
+  let deleteBtns = document.getElementsByClassName("delete-btn");
   for (let i = 0; i < cards.length; i++) {
     let card = cards[i];
     card.className += ` card-color-${getRandomInt(
       1,
       5
     )} card-rotation-${getRandomInt(1, 11)}`;
+
+    // Adiciona evento de click no botão de deletar
+    // let deleteBtn = deleteBtns[i];
+    // deleteBtn.addEventListener("click", function () {
+    //   card.remove();
+    //   // TODO: Deletar do banco de dados
+    // });
   }
 });

@@ -47,8 +47,8 @@ def build_response(body='', code=200, reason='OK', headers=''):
     """Implemente a função build_response, que recebe um corpo, um código, um motivo e um cabeçalho e devolve uma string com a resposta HTTP.
     """
     if len(headers) == 0:
-        return f'HTTP/1.1 {code} {reason}\n{body}'.encode()
+        return f'HTTP/1.1 {code} {reason}\n\n{body}'.encode()
     else:	
-        return f'HTTP/1.1 {code} {reason}\n{headers}\n{body}'.encode()
+        return f'HTTP/1.1 {code} {reason}\n{headers}\n\n{body}'.encode()
 
     

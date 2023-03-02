@@ -24,6 +24,7 @@ while True:
     route = extract_route(request)
 
     filepath = CUR_DIR / route
+    print(filepath)
     if filepath.is_file():
         response = build_response() + read_file(filepath)
     elif route == '':

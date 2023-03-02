@@ -4,7 +4,10 @@ from database import *
 def extract_route(request):
     """Implemente a função extract_route, que recebe uma string com a requisição e devolve a rota, excluindo o primeiro caractere (/).
     """
-    return request.split()[1][1:]
+    # return request.split()[1][1:]
+    if request == "":
+        return ""
+    return "/".join(request.splitlines()[0].split("/")[1:]).split("HTTP")[0].strip()
 
 def read_file(filepath):
     """Implemente a função read_file, que recebe um caminho de arquivo e devolve o conteúdo do arquivo.
@@ -24,7 +27,7 @@ def load_data(banco):
 def load_template(filepath):
     """Implemente a função load_template, que recebe um caminho de arquivo e devolve uma string com o conteúdo do arquivo.
     """
-    with open("templates/" + filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, 'r', encoding='utf-8') as f:
         return f.read()
     
 def formata_nota(nota):
@@ -43,6 +46,9 @@ def adicionar_nota(nota):
 def build_response(body='', code=200, reason='OK', headers=''):
     """Implemente a função build_response, que recebe um corpo, um código, um motivo e um cabeçalho e devolve uma string com a resposta HTTP.
     """
-    return f'HTTP/1.1 {code} {reason} \n {headers} \n {body}'  
+    if len(headers) == 0:
+        return f'HTTP/1.1 {code} {reason}\n{body}'.encode()
+    else:	
+        return f'HTTP/1.1 {code} {reason}\n{headers}\n{body}'.encode()
 
     

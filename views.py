@@ -25,13 +25,13 @@ def index(request):
         return build_response(code=303, reason='See Other', headers='Location: /')
     # Cria uma lista de <li>'s para cada anotação
     # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
-    note_template = load_template('components/note.html')
+    note_template = load_template('templates/components/note.html')
     notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
+        note_template.format(title=dados.title, details=dados.content)
         for dados in load_data('banco')
     ]
     notes = '\n'.join(notes_li)
 
-    body = load_template('index.html').format(notes=notes)
+    body = load_template('templates/index.html').format(notes=notes)
     
     return build_response(body)

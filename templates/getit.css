@@ -66,10 +66,12 @@ body {
 
 .form-card-title {
   border: none;
-  font-size: 25px
+  font-size: 25px;
+  width: 100%;
 }
 
 .autoresize {
+  width: 100%;
   border: none;
   resize: none;
   padding-top: 20px;
@@ -78,6 +80,7 @@ body {
 }
 
 .btn {
+  margin-bottom: 5%;
   font-weight: bold;
   position: relative;
   display: block;
@@ -129,14 +132,88 @@ body {
   transition: width 0.2s ease-out, padding-top 0.2s ease-out;
 }
 
+.btn_update {
+  text-decoration: none;
+  margin: 1%;
+  font-weight: bold;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  width: 100%;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  background-color: #f7d736;
+
+  transition: background-color 0.3s;
+}
+
+.btn_update > * {
+  position: relative;
+}
+
+.btn_update:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 0;
+  padding-top: 0;
+
+  border-radius: 100%;
+
+  background-color: rgba(236, 240, 241, 0.3);
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn_update:active:before {
+  width: 120%;
+  padding-top: 120%;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+.btn_update p{
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card_header p{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}	
+
 .card-container{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .card{
-  width: 15%;
+  width: 20%;
   min-height: 120px;
   display: flex;
   font-family: 'Permanent Marker', cursive;
@@ -151,6 +228,8 @@ body {
 .card-title {
   font-size: 25px;
   padding-bottom: 20%;
+  width: 60%;
+  word-wrap: break-word;
 }
 
 .card-content p{
@@ -243,6 +322,23 @@ body {
   height: 20px;
 }
 
+.edit-btn {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+}
+
+.edit_icon {
+  position: absolute;
+
+  top: 10%;
+  right: 25%;
+
+
+  width: 20px;
+  height: 20px;
+}
 
 
 

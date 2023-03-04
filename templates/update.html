@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="templates/getit.css" />
+    <link rel="stylesheet" href="../templates/getit.css" />
   </head>
 
   <body>
@@ -25,26 +25,33 @@
     </div>
 
     <main class="container">
-      <form class="form-card" method="post">
-        <input
-          class="form-card-title"
-          type="text"
-          name="titulo"
-          placeholder="Título"
-        />
-        <textarea
-          class="autoresize"
-          name="detalhes"
-          placeholder="Digite o conteúdo..."
-        ></textarea>
-        <button class="btn" type="submit">Criar</button>
-      </form>
-
-      <div class="card-container">
-        {notes}
-      </div>
+      <div class="form-card">
+        <form method="post">
+          <input
+            class="form-card-title"
+            type="text"
+            name="titulo"
+            value="{title}"
+          />
+          <textarea
+            class="autoresize"
+            name="detalhes"
+            >{details}</textarea>
+          </textarea>
+          <div class="btns">
+            <button class="btn_update" type="submit">Salvar</button>
+          </div>
+        </form>
+        <a class="edit-btn">
+          <div class="btns">
+            <button class="btn_update" onclick="history.back()">Cancelar</button>
+          </div>
+        </a>
+        </div>
+      
     </main>
 
-    <script type="text/javascript" src="templates/getit.js"></script>
+
+    <script type="text/javascript" src="../templates/getit.js"></script>
   </body>
 </html>

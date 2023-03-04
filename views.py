@@ -19,14 +19,12 @@ def index(request):
             cv = chave_valor.split('=')
             params[cv[0]] = urllib.parse.unquote_plus(cv[1])
 
-        formata_nota(params) # params['titulo] e params['detalhes']
+        formata_nota(params) 
         
         adicionar_nota(params)
 
         return build_response(code=303, reason='See Other', headers='Location: /')
     
-    # Cria uma lista de <li>'s para cada anotação
-    # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('templates/components/note.html')
     notes_li = [
         note_template.format(id=dados.id, title=dados.title, details=dados.content)
@@ -44,5 +42,36 @@ def delete(request):
     db = Database('banco')
     id = request.split("delete/")[1].split(' HTTP')[0]
     db.delete_id(id)
-    print(id)
     return build_response(code=303, reason='See Other', headers='Location: /')
+
+def update(request):
+    route = extract_route(request)
+    id = route.split('/')[1]
+    
+    db = Database('banco')
+    note = db.get(id)
+
+    body = load_template('templates/update.html').format(id=note.id, title=note.title, details=note.content)
+    print('oi1')
+    print(note)
+    print(body)
+    if request.startswith('POST'):
+        request = request.replace('\r', '') 
+
+        partes = request.split('\n\n')
+        corpo = partes[1]
+        params = {}
+
+        for chave_valor in corpo.split('&'):
+            cv = chave_valor.split('=')
+            params[cv[0]] = urllib.parse.unquote_plus(cv[1])
+
+        formata_nota(params) 
+        
+        note.title = params['titulo']
+        note.content = params['detalhes']
+
+        db.update(note)
+        return build_response(code=303, reason='See Other', headers='Location: /')
+    
+    return build_response(body=body)

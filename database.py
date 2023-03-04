@@ -30,9 +30,11 @@ class Database:
         self.conn.execute('UPDATE note SET title = ?, content = ? WHERE id = ?', (entry.title, entry.content, entry.id))
         self.conn.commit()
 
-    # Implemente o método delete(self, note_id), que recebe o valor de um id e apaga essa entrada do banco de dados. Obs: lembre-se de chamar o método commit depois do execute.
-
-    # Se tudo der certo. O teste test_delete_row e todos os outros devem passar com sucesso.
+    def get(self, id):
+        cursor = self.conn.execute(f"SELECT id, title, content FROM note where id ={id}")
+        linha = cursor.fetchone()
+        note = Note(linha[0], linha[1], linha[2])
+        return note
 
     def delete_id(self, note_id):
         self.conn.execute(f'DELETE FROM note WHERE id = {note_id}')

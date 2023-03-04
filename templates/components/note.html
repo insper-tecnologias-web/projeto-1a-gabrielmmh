@@ -1,9 +1,16 @@
 
 <div class="card">
-    <h3 class="card-title">{title}</h3>
-    <a class="delete-btn" href=/delete/{id}>
-      <img src="../templates/img/delete_icon.png" class="delete_icon" alt="Delete Icon">
-    </button>
+    <div class="card-header">
+      <h3 class="card-title">{title}</h3>
+      <div class="btns">
+        <a class="delete-btn" href=/delete/{id}>
+          <img src="../templates/img/delete_icon.png" class="delete_icon" alt="Delete Icon">
+        </a>
+        <a class="edit-btn" href=/update/{id}>
+          <img src="../templates/img/edit_icon.png" class="edit_icon" alt="Edit Icon">
+        </a>
+      </div>
+    </div>
     <div class="card-content">
       <p>
         {details}

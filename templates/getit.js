@@ -28,11 +28,5 @@ document.addEventListener("DOMContentLoaded", function () {
       5
     )} card-rotation-${getRandomInt(1, 11)}`;
 
-    // Adiciona evento de click no botão de deletar
-    // let deleteBtn = deleteBtns[i];
-    // deleteBtn.addEventListener("click", function () {
-    //   card.remove();
-    //   // TODO: Deletar do banco de dados
-    // });
   }
 });

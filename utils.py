@@ -39,7 +39,6 @@ def adicionar_nota(nota):
     """Implemente a função adicionar_nota, que recebe um dicionário com os dados da nota e adiciona a nota ao arquivo notes.json.
     """
     db = Database('banco')
-    size = len(nota)
     note = Note(title=nota['titulo'], content=nota['detalhes'])
     db.add(note)
 
